@@ -7,11 +7,11 @@ The exercise involves creating **2 routes**:
 -  /payments/ 
 
 ## Steps
-1. Clone the project to your GitHub Account **DO NOT FORK**
+1. **Clone** the project to your GitHub account **[DO NOT FORK]**
 2. Create a branch with your name (ex: andre-pinto)
 3. Develop under that branch
-4. Submit a Pull Request on your Repo
-5. Send us an email
+4. Submit a **Pull Request** on your **Repo**
+5. Send us an email with your **Repo**
 
 
 ## Generator Page
