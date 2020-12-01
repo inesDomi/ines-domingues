@@ -1,0 +1,39 @@
+<section class="container">
+  <div class="row vh-100 my-5">
+    <div class="col">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="form-group">
+          <label class="small text-secondary" for="character">{{
+            "Character" | uppercase
+          }}</label>
+          <input
+            [(ngModel)]="character"
+            (keyup)="onChangeCharacter($event)"
+            [placeholder]="'Character' | uppercase"
+            maxlength="1"
+            type="text"
+            class="form-control"
+            name="character"
+          />
+        </div>
+        <button class="btn btn-secondary" (click)="generatorMatrix()">
+          {{ "generate 2d grid" | uppercase }}
+        </button>
+      </div>
+      <div class="table-responsive mt-5">
+        <table class="table table-bordered">
+          <tr *ngFor="let element of (matrix$ | async); index as index">
+            <td class="text-center" *ngFor="let col of element">
+              {{ col }}
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="text-center mt-5" *ngIf="code$ | async as code">
+        <span class="border rounded p-3 ">
+          Your code: {{ code }}
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

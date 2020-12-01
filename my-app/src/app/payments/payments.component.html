@@ -1,0 +1,78 @@
+<section class="container">
+  <div class="row vh-100 my-5">
+    <div class="col">
+      <div class="text-center mt-5" *ngIf="code$ | async as code">
+        <span class="border rounded p-3"> Your code now: {{ code }} </span>
+      </div>
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div class="d-flex align-items-center mt-5">
+          <div class="form-group form-inline">
+            <div class="mb-2 mr-4">
+              <label
+                class="small text-secondary justify-content-start mb-2"
+                for="payment"
+                >{{ "Payment" | uppercase }}</label
+              >
+              <input
+                [(ngModel)]="model.payment"
+                [placeholder]="'Payment' | uppercase"
+                type="text"
+                name="payment"
+                required
+                class="form-control"
+              />
+            </div>
+            <div class="mb-2 mr-4">
+              <label
+                class="small text-secondary justify-content-start mb-2"
+                for="Ammount"
+                >{{ "Ammount" | uppercase }}</label
+              >
+              <input
+                [(ngModel)]="model.ammount"
+                [placeholder]="'Ammount' | uppercase"
+                type="number"
+                name="Ammount"
+                requiredheroForm
+                class="form-control"
+              />
+            </div>
+          </div>
+          <button
+            class="btn btn-secondary"
+            [disabled]="!f.form.valid"
+            type="submit"
+          >
+            {{ "+ Add" | uppercase }}
+          </button>
+        </div>
+      </form>
+
+      <div class="table-responsive mt-5" *ngIf="(payments$ | async).length">
+        <table class="table table-bordered">
+          <tr>
+            <th scope="">Name</th>
+            <th scope="">Ammount</th>
+            <th scope="">Code</th>
+            <th scope="">Grid</th>
+          </tr>
+          <tr *ngFor="let payment of payments$ | async">
+            <td>{{ payment.payment }}</td>
+            <td>{{ payment.ammount }}</td>
+            <td>{{ payment.code }}</td>
+            <td>
+              <ul
+                class="list-group list-group-horizontal"
+                *ngFor="let element of payment.matrix"
+              >
+                <li *ngFor="let col of element" class="list-group-item w-100">
+                  {{ col }}
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
